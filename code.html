@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammet Seyda Armağan - Link Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#195de6",
+            "background-light": "#f6f6f8",
+            "background-dark": "#111621",
+            "surface-dark": "#1a202e",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "2rem",
+            xl: "3rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #111621; }
+    ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+
+    .glass-card {
+      background: rgba(26, 32, 46, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gradient-bg {
+      background:
+        radial-gradient(circle at 15% 50%, rgba(25, 93, 230, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(25, 93, 230, 0.05), transparent 25%);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen gradient-bg flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 selection:bg-primary selection:text-white">
+  <main class="w-full max-w-2xl flex flex-col gap-10 z-10">
+    <header class="flex flex-col items-center text-center space-y-6">
+      <div class="relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-full opacity-30 group-hover:opacity-60 blur transition duration-500"></div>
+        <div class="relative">
+          <img
+            src="photo.png"
+            alt="Profile picture of Muhammet Seyda Armağan"
+            class="w-32 h-32 rounded-full border-4 border-background-dark object-cover shadow-2xl"
+          />
+          <div class="absolute bottom-1 right-1 w-6 h-6 bg-background-dark rounded-full flex items-center justify-center">
+            <div class="w-4 h-4 bg-green-500 rounded-full border-2 border-background-dark"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          Muhammet Seyda <span class="text-primary">Armağan</span>
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
+          Backend-focused Full-stack Developer.<br class="hidden sm:block" />
+          API entegrasyonları üzerinde yetkinim.
+        </p>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a aria-label="GitHub" class="p-3 rounded-full bg-surface-dark/50 hover:bg-primary/20 hover:text-primary transition-all duration-300 group" href="https://github.com/muhammetseyda" target="_blank" rel="noopener noreferrer">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+        </a>
+
+        <a aria-label="X" class="p-3 rounded-full bg-surface-dark/50 hover:bg-primary/20 hover:text-primary transition-all duration-300 group" href="https://x.com/m.seydaarmagan" target="_blank" rel="noopener noreferrer">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+        </a>
+
+        <a aria-label="LinkedIn" class="p-3 rounded-full bg-surface-dark/50 hover:bg-primary/20 hover:text-primary transition-all duration-300 group" href="https://www.linkedin.com/in/muhammetseydaarmagan/" target="_blank" rel="noopener noreferrer">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+        </a>
+
+        <a aria-label="Instagram" class="p-3 rounded-full bg-surface-dark/50 hover:bg-primary/20 hover:text-primary transition-all duration-300 group" href="https://www.instagram.com/msa.dev" target="_blank" rel="noopener noreferrer">
+          <span class="material-icons-round text-2xl">photo_camera</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="flex flex-col gap-4 w-full">
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-primary/10" href="https://medium.com/@muhammedseyda/vertical-slice-architecture-vsa-38cdb0c24015" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">article</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <p class="text-sm font-medium text-primary mb-0.5 uppercase tracking-wider">Featured</p>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">Son Makale</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">Vertical Slice Architecture (VSA)</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-primary transition-colors transform group-hover:translate-x-1">arrow_forward</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.github.com/muhammetseyda/Vertical-Slice-Architecture" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">code</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">GitHub Projesi</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">Vertical Slice Architecture reposu</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">open_in_new</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.youtube.com/@mseydaarmagan" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">play_circle</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">YouTube Channel</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">@mseydaarmagan</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">open_in_new</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.youtube.com/playlist?list=PLjLOcbBvo6BRb3qI5mzsKGLN7nr_z9lOJ" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">view_list</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Vertical Slice Architecture Serisi</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">YouTube playlist</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">arrow_forward</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.youtube.com/playlist?list=PLjLOcbBvo6BRDSaTxKcBKaBfxUXk3_lCg" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">menu_book</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Blog MVC Serisi</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">YouTube playlist</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">arrow_forward</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.youtube.com/playlist?list=PLjLOcbBvo6BRvMzM0LTAJNOLBfA9c8V5e" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">shopping_cart</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">E-Ticaret Serisi</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">YouTube playlist</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">arrow_forward</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.youtube.com/playlist?list=PLjLOcbBvo6BRT2qPI2xeDjZjsEiH3B7Bx" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">storefront</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">KafeAPI Serisi</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">YouTube playlist</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">arrow_forward</span>
+        </div>
+      </a>
+
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-yellow-400/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg" href="https://www.buymeacoffee.com/mseydaarmagan" target="_blank" rel="noopener noreferrer">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-300 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-300">
+          <span class="material-icons-round text-3xl">coffee</span>
+        </div>
+        <div class="ml-5 flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-yellow-400 transition-colors">Kahve Ismarla</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm truncate">Çalışmalarıma destek ol</p>
+        </div>
+        <div class="ml-4 flex-shrink-0 self-center">
+          <span class="material-icons-round text-slate-400 group-hover:text-white transition-colors">favorite</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="w-full glass-card rounded-lg p-8 text-center space-y-4">
+      <div class="flex flex-col items-center">
+        <div class="p-3 bg-primary/10 rounded-full mb-4">
+          <span class="material-icons-round text-primary text-2xl">hub</span>
+        </div>
+        <h3 class="text-xl font-bold text-white">Tüm Platformlar</h3>
+        <p class="text-slate-400 mt-2 max-w-sm mx-auto">Sosyal hesaplarım ve yayınladığım içerikler.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 max-w-xl mx-auto text-sm">
+        <a class="bg-background-dark border border-slate-700 text-white rounded-full px-5 py-3 hover:border-primary hover:text-primary transition-all" href="https://github.com/muhammetseyda" target="_blank" rel="noopener noreferrer">GitHub: @muhammetseyda</a>
+        <a class="bg-background-dark border border-slate-700 text-white rounded-full px-5 py-3 hover:border-primary hover:text-primary transition-all" href="https://x.com/yazilimcisarman" target="_blank" rel="noopener noreferrer">X: @yazilimcisarman</a>
+        <a class="bg-background-dark border border-slate-700 text-white rounded-full px-5 py-3 hover:border-primary hover:text-primary transition-all" href="https://www.linkedin.com/in/muhammetseydaarmagan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="bg-background-dark border border-slate-700 text-white rounded-full px-5 py-3 hover:border-primary hover:text-primary transition-all" href="https://www.instagram.com/msa.dev" target="_blank" rel="noopener noreferrer">Instagram: @msa.dev</a>
+        <a class="bg-background-dark border border-slate-700 text-white rounded-full px-5 py-3 hover:border-primary hover:text-primary transition-all sm:col-span-2" href="https://mseydaarmagan.medium.com/vertical-slice-architecture-vsa-38cdb0c24015" target="_blank" rel="noopener noreferrer">Medium: Vertical Slice Architecture (VSA)</a>
+      </div>
+    </div>
+
+    <footer class="mt-8 text-center text-slate-500 dark:text-slate-600 text-sm pb-8">
+      <p>&copy; 2026 Muhammet Seyda Armağan. Tüm hakları saklıdır.</p>
+      <div class="flex justify-center gap-4 mt-2">
+        <span>Backend-focused Full-stack Developer</span>
+      </div>
+    </footer>
+  </main>
+
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] opacity-20"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-sky-500/20 rounded-full blur-[120px] opacity-20"></div>
+  </div>
+</body>
+</html>
