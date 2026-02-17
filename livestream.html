@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masterclass Takvimi | M. Seyda Armağan</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0d1424;
+    --card: #111827;
+    --border: #1e2d45;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --glow: #00d4ff40;
+    --text: #e2e8f0;
+    --muted: #4a6080;
+    --off: #ff6b6b;
+    --green: #00ff88;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow orbs */
+  body::after {
+    content: '';
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 100px;
+    padding: 6px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .header-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  /* COUNTDOWN */
+  #countdown-box {
+    background: linear-gradient(135deg, #0d1424 0%, #111827 100%);
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,212,255,0.05), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  #countdown-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  }
+
+  .countdown-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  #timer {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 30px var(--accent);
+    letter-spacing: 4px;
+  }
+
+  .timer-seg { display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px; }
+  .timer-seg-label { font-size: 0.55rem; color: var(--muted); letter-spacing: 2px; margin-top: 4px; font-family: 'Space Mono', monospace; }
+
+  #next-topic {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #7c3aed;
+    font-weight: 500;
+  }
+
+  /* NOTICE */
+  .notice-box {
+    background: rgba(0,255,136,0.06);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    color: #00ff88;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* CALENDAR AREA */
+  .cal-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .calendars-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .month-block {
+    flex: 1;
+    min-width: 300px;
+    max-width: 520px;
+  }
+
+  .month-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .month-label span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .grid-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+
+  .day-hdr {
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    padding: 6px 0 10px;
+    letter-spacing: 1px;
+  }
+
+  .cell {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .cell .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1;
+  }
+
+  .cell.empty { background: transparent; border-color: transparent; }
+
+  .cell.normal {
+    background: rgba(255,255,255,0.02);
+    border-color: var(--border);
+  }
+
+  .cell.stream {
+    background: rgba(0,212,255,0.08);
+    border-color: rgba(0,212,255,0.4);
+    cursor: pointer;
+  }
+
+  .cell.stream .num { color: #fff; font-weight: 700; }
+
+  .cell.stream::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: radial-gradient(circle at center, rgba(0,212,255,0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .cell.stream:hover {
+    transform: scale(1.08);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+    z-index: 2;
+  }
+
+  .cell.stream:hover::after { opacity: 1; }
+
+  .cell.stream .dot {
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent);
+    margin-top: 3px;
+  }
+
+  .cell.off {
+    background: rgba(255,107,107,0.06);
+    border-color: rgba(255,107,107,0.3);
+    cursor: pointer;
+  }
+
+  .cell.off .num { color: var(--off); font-size: 0.6rem; }
+
+  .cell.today {
+    border-color: rgba(124,58,237,0.6) !important;
+    box-shadow: 0 0 15px rgba(124,58,237,0.2) !important;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.show { display: flex; }
+
+  .modal-card {
+    background: var(--card);
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 24px;
+    padding: 36px;
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 0 80px rgba(0,212,255,0.1);
+  }
+
+  .modal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 30px; right: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.85) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { background: rgba(255,107,107,0.15); color: var(--off); border-color: var(--off); }
+
+  .modal-ep {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .modal-date-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #7c3aed;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .modal-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #94a3b8;
+    margin-bottom: 24px;
+    border-left: 2px solid rgba(0,212,255,0.3);
+    padding-left: 14px;
+  }
+
+  .modal-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .btn-yt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(255,0,0,0.25);
+  }
+
+  .btn-yt:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,0,0,0.35); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────── */
+
+  /* Tablet: takvimleri alt alta diz */
+  @media (max-width: 720px) {
+    .page-wrapper { padding: 28px 16px 50px; }
+
+    header { margin-bottom: 32px; }
+
+    #countdown-box { padding: 22px 20px; margin-bottom: 32px; border-radius: 16px; }
+    .countdown-label { font-size: 0.6rem; letter-spacing: 3px; }
+
+    /* Timer: separator gizle, segmentler yanyana sığsın */
+    #timer { display: flex; align-items: flex-start; justify-content: center; gap: 2px; }
+    #timer .sep { display: none; }
+    .timer-seg { margin: 0 6px; }
+    .timer-seg > span:first-child { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+    .timer-seg-label { font-size: 0.5rem; }
+
+    #next-topic { font-size: 0.82rem; }
+
+    .notice-box { font-size: 0.78rem; padding: 12px 14px; }
+
+    .calendars-wrap { flex-direction: column; gap: 24px; }
+    .month-block { min-width: unset; max-width: 100%; width: 100%; }
+
+    .grid-wrap { padding: 10px; border-radius: 12px; }
+    .cal-grid { gap: 4px; }
+    .day-hdr { font-size: 0.55rem; padding: 4px 0 8px; }
+    .cell { border-radius: 6px; }
+    .cell .num { font-size: 0.65rem; }
+    .cell.stream .dot { width: 3px; height: 3px; margin-top: 2px; }
+
+    .modal-card { padding: 24px 20px; border-radius: 18px; }
+    .modal-title { font-size: 1.2rem; }
+  }
+
+  /* Mobil: ekstra küçük ekranlar */
+  @media (max-width: 420px) {
+    h1 { font-size: 1.7rem; }
+    .header-badge { font-size: 0.6rem; letter-spacing: 2px; padding: 5px 14px; }
+    .header-sub { font-size: 0.8rem; }
+
+    #countdown-box { padding: 18px 12px; }
+    .timer-seg { margin: 0 4px; }
+    .timer-seg > span:first-child { font-size: 1.4rem; }
+
+    .cal-grid { gap: 3px; }
+    .grid-wrap { padding: 8px; }
+    .day-hdr { font-size: 0.5rem; letter-spacing: 0; padding: 3px 0 6px; }
+    .cell .num { font-size: 0.6rem; }
+    .cell.stream .dot { display: none; } /* çok küçük, nokta kaldırılsın */
+
+    /* Modal tam ekran gibi görünsün */
+    .modal-overlay { align-items: flex-end; }
+    .modal-card {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 20px 20px 0 0;
+      padding: 24px 18px 32px;
+      margin: 0;
+    }
+    .modal-title { font-size: 1.1rem; }
+    .modal-desc { font-size: 0.85rem; }
+
+    footer { font-size: 0.65rem; margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header>
+    <div class="header-badge">Ramazan 2026 • Canlı Yayın Serisi</div>
+    <h1>Modern .NET & AI<br>Masterclass</h1>
+    <p class="header-sub">M. Seyda Armağan • Her yayın saat 22:30</p>
+  </header>
+
+  <div id="countdown-box">
+    <div class="countdown-label">Sıradaki Yayına Kalan</div>
+    <div id="timer">
+      <span class="timer-seg"><span id="t-d">00</span><span class="timer-seg-label">GÜN</span></span>
+      <span class="sep" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:2rem;padding:0 4px;line-height:1.2">:</span>
+      <span class="timer-seg"><span id="t-h">00</span><span class="timer-seg-label">SAAT</span></span>
+      <span class="sep" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:2rem;padding:0 4px;line-height:1.2">:</span>
+      <span class="timer-seg"><span id="t-m">00</span><span class="timer-seg-label">DAK</span></span>
+      <span class="sep" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:2rem;padding:0 4px;line-height:1.2">:</span>
+      <span class="timer-seg"><span id="t-s">00</span><span class="timer-seg-label">SAN</span></span>
+    </div>
+    <div id="next-topic">Yükleniyor...</div>
+  </div>
+
+  <div class="notice-box">
+    ✦ Takvim değişebilir — Belirtilen tarihler dışında ekstra yayınlar da yapılacaktır ✦
+  </div>
+
+  <p class="cal-section-title">// Yayın Takvimi</p>
+
+  <div class="calendars-wrap">
+    <div class="month-block">
+      <div class="month-label"><span></span>Şubat 2026</div>
+      <div class="grid-wrap">
+        <div class="cal-grid" id="feb-grid">
+          <div class="day-hdr">PT</div><div class="day-hdr">SA</div><div class="day-hdr">ÇA</div>
+          <div class="day-hdr">PE</div><div class="day-hdr">CU</div><div class="day-hdr">CT</div><div class="day-hdr">PZ</div>
+        </div>
+      </div>
+    </div>
+    <div class="month-block">
+      <div class="month-label"><span></span>Mart 2026</div>
+      <div class="grid-wrap">
+        <div class="cal-grid" id="mar-grid">
+          <div class="day-hdr">PT</div><div class="day-hdr">SA</div><div class="day-hdr">ÇA</div>
+          <div class="day-hdr">PE</div><div class="day-hdr">CU</div><div class="day-hdr">CT</div><div class="day-hdr">PZ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>✦ takvim değişebilir • ekstra yayınlar olacak • @mseydaarmagan ✦</footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-ep" id="m-ep"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-date-row">📅 <span id="m-date"></span></div>
+    <div class="modal-desc" id="m-desc"></div>
+    <div class="modal-time">⏰ 22:30 &nbsp;•&nbsp; YouTube Canlı Yayın</div>
+    <a href="https://youtube.com/@mseydaarmagan" target="_blank" class="btn-yt">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      YouTube Kanalına Git
+    </a>
+  </div>
+</div>
+
+<script>
+// Stream data — month: 0=Şubat(2), 1=Mart(3)
+const streams = [
+  { day:21, mo:0, ep:"01", title:"Modular Monolith & VSA", desc:"Sistemi modüllere ayırarak yönetilebilir bir yapı kuruyoruz. Modular Monolith prensipleri, Vertical Slice Architecture ile karşılaştırma ve pratik klasör yapısı." },
+  { day:24, mo:0, ep:"02", title:"FastEndpoints", desc:"REPR pattern ile yüksek performanslı API geliştirme. FastEndpoints kütüphanesiyle minimal, okunabilir endpoint yapısı kuruyoruz." },
+  { day:26, mo:0, ep:"03", title:"Semantic Kernel", desc:"LLM modellerini .NET uygulamalarına entegre etmenin en modern yolu. Semantic Kernel ile Prompt Engineering ve AI pipeline kuruyoruz." },
+  { day:28, mo:0, ep:"04", title:"Semantic Kernel (Devam)", desc:"Geçen haftanın konularını derinleştiriyor, RAG (Retrieval Augmented Generation) ve Memory entegrasyonunu uygulamalı olarak yapıyoruz." },
+  { day:3,  mo:1, ep:"05", title:"İzleyici Projeleri", desc:"Seyircilerin gönderdiği projeler inceleniyor! Canlı kod review, mimari değerlendirme ve pratik geri bildirimler." },
+  { day:5,  mo:1, ep:"06", title:"Test Containers & Test Tipleri", desc:"Test Containers ile entegrasyon testleri, unit/integration/e2e farkları ve neden test yazmalıyız sorusuna pratik yanıtlar." },
+  { day:7,  mo:1, ep:"07", title:".NET Aspire", desc:"Mikroservisleri orkestre etmenin en modern yolu. Dağıtık sistemlerde Aspire kullanımı ve cloud-native uygulama geliştirme." },
+  { day:10, mo:1, ep:"08", title:"SQL Optimizasyon", desc:"Index yönetimi, Query plan okuma, N+1 problemi ve gerçek dünya veritabanı darboğazlarını giderme teknikleri." },
+  { day:12, mo:1, ep:"09", title:"Redis & Caching Patterns", desc:"Distributed caching stratejileri, Pub/Sub mekanizması ve Redis Stack ile gelişmiş veri yapılarının kullanımı." },
+  { day:15, mo:1, ep:"10", title:"RabbitMQ & Mesaj Kuyruğu", desc:"Event-driven architecture, mesaj kuyrukları ve RabbitMQ ile güvenilir asenkron iletişim kuruyoruz." },
+];
+
+// Feb 2026 starts on Sunday (0-indexed Mon=0): Feb 1 is Sunday → col index 6
+// Feb 1 = Sunday. Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+// Mar 1 = Sunday too
+const monthInfo = [
+  { days: 28, startCol: 6 }, // Feb 2026: starts Sunday
+  { days: 31, startCol: 6 }, // Mar 2026: starts Sunday
+];
+
+const monthNames = ["Şubat", "Mart"];
+const monthYear = [2026, 2026];
+const monthNum = [2, 3]; // actual month numbers
+
+const today = new Date();
+
+function buildCalendar(moIdx, gridId) {
+  const grid = document.getElementById(gridId);
+  const { days, startCol } = monthInfo[moIdx];
+
+  // empty cells
+  for (let i = 0; i < startCol; i++) {
+    const e = document.createElement('div');
+    e.className = 'cell empty';
+    grid.appendChild(e);
+  }
+
+  for (let d = 1; d <= days; d++) {
+    const s = streams.find(s => s.day === d && s.mo === moIdx);
+    const cell = document.createElement('div');
+    const isToday = today.getFullYear() === 2026 && today.getMonth()+1 === monthNum[moIdx] && today.getDate() === d;
+
+    if (s) {
+      cell.className = 'cell stream' + (isToday ? ' today' : '');
+      cell.innerHTML = `<span class="num">${d}</span><span class="dot"></span>`;
+      cell.onclick = () => openModal(s, moIdx);
+    } else {
+      cell.className = 'cell normal' + (isToday ? ' today' : '');
+      cell.innerHTML = `<span class="num">${d}</span>`;
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+buildCalendar(0, 'feb-grid');
+buildCalendar(1, 'mar-grid');
+
+function openModal(s, moIdx) {
+  document.getElementById('m-ep').textContent = `EPISODE ${s.ep}`;
+  document.getElementById('m-title').textContent = s.title;
+  document.getElementById('m-date').textContent = `${s.day} ${monthNames[moIdx]} ${monthYear[moIdx]}`;
+  document.getElementById('m-desc').textContent = s.desc;
+  document.getElementById('modal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+// Countdown
+function tick() {
+  const now = new Date();
+  let next = null;
+  for (const s of streams) {
+    const year = 2026;
+    const month = s.mo === 0 ? 1 : 2; // JS months: Feb=1, Mar=2
+    const target = new Date(year, month, s.day, 22, 30, 0);
+    if (target > now) { next = { date: target, title: s.title }; break; }
+  }
+
+  if (!next) {
+    document.getElementById('t-d').textContent = '00';
+    document.getElementById('t-h').textContent = '00';
+    document.getElementById('t-m').textContent = '00';
+    document.getElementById('t-s').textContent = '00';
+    document.getElementById('next-topic').textContent = '✦ Seri Tamamlandı ✦';
+    return;
+  }
+
+  const diff = next.date - now;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('t-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('t-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('t-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('t-s').textContent = String(s).padStart(2,'0');
+  document.getElementById('next-topic').textContent = '▸ ' + next.title;
+}
+
+setInterval(tick, 1000);
+tick();
+</script>
+</body>
+</html>

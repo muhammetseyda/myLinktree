@@ -35,6 +35,34 @@
       },
     };
   </script>
+  <script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.classList.contains('dark')) {
+      html.classList.remove('dark');
+      icon.textContent = 'dark_mode';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.add('dark');
+      icon.textContent = 'light_mode';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  // Sayfa açılışında tercihi hatırla
+  (function() {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const useDark = saved ? saved === 'dark' : prefersDark;
+    document.documentElement.classList.toggle('dark', useDark);
+    // İkon durumunu eşitle (DOM hazır olunca)
+    document.addEventListener('DOMContentLoaded', function() {
+      const icon = document.getElementById('theme-icon');
+      if (icon) icon.textContent = useDark ? 'light_mode' : 'dark_mode';
+    });
+  })();
+</script>
 
   <style>
     ::-webkit-scrollbar { width: 8px; }
@@ -54,7 +82,35 @@
         radial-gradient(circle at 15% 50%, rgba(25, 93, 230, 0.08), transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(25, 93, 230, 0.05), transparent 25%);
     }
+
+    /* Light mode overrides */
+html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+html:not(.dark) .gradient-bg {
+  background:
+    radial-gradient(circle at 15% 50%, rgba(25, 93, 230, 0.06), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(25, 93, 230, 0.04), transparent 25%);
+}
+
+html:not(.dark) ::-webkit-scrollbar-track { background: #f6f6f8; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #cbd5e0; }
+
+/* Geçiş animasyonu */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
   </style>
+  <button
+  id="theme-toggle"
+  onclick="toggleTheme()"
+  class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-400 hover:text-primary transition-colors shadow-lg"
+  aria-label="Tema değiştir"
+>
+  <span class="material-icons-round text-xl" id="theme-icon">light_mode</span>
+</button>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen gradient-bg flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 selection:bg-primary selection:text-white">
@@ -104,6 +160,42 @@
     </header>
 
     <div class="flex flex-col gap-4 w-full">
+      <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-primary/10" href="livestream.html" target="_blank" rel="noopener noreferrer">
+  <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+    <span class="material-icons-round text-3xl">live_tv</span>
+  </div>
+  <div class="ml-5 flex-1 min-w-0">
+    <p class="text-sm font-medium text-primary mb-0.5 uppercase tracking-wider">Ramazan 2026</p>
+    <h3 class="text-xl font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">Canlı Yayın Takvimi</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-sm truncate">Modern .NET & AI Masterclass serisi </p>
+  </div>
+  <div class="ml-4 flex-shrink-0 self-center">
+    <span class="material-icons-round text-slate-400 group-hover:text-primary transition-colors transform group-hover:translate-x-1">arrow_forward</span>
+  </div>
+</a>
+      <!-- PROJE FORMU — 3 Mart 2026'ya kadar görünür -->
+<script>
+  (function() {
+    var deadline = new Date('2026-03-03T23:59:59');
+    if (new Date() > deadline) {
+      document.currentScript.closest('#proje-form-card').style.display = 'none';
+    }
+  })();
+</script>
+
+<a id="proje-form-card" class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-primary/10" href="https://forms.gle/1TPRmhsoVeNyB6Yc6" target="_blank" rel="noopener noreferrer">
+  <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+    <span class="material-icons-round text-3xl">upload_file</span>
+  </div>
+  <div class="ml-5 flex-1 min-w-0">
+    <p class="text-sm font-medium text-primary mb-0.5 uppercase tracking-wider">3 Mart'a Kadar</p>
+    <h3 class="text-xl font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">Projenizi Gönderin</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-sm truncate">Canlı yayında birlikte inceleyelim</p>
+  </div>
+  <div class="ml-4 flex-shrink-0 self-center">
+    <span class="material-icons-round text-slate-400 group-hover:text-primary transition-colors transform group-hover:translate-x-1">arrow_forward</span>
+  </div>
+</a>
       <a class="glass-card group flex items-center p-4 pr-6 rounded-lg hover:border-primary/50 hover:bg-surface-dark/80 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-primary/10" href="https://medium.com/@muhammedseyda/vertical-slice-architecture-vsa-38cdb0c24015" target="_blank" rel="noopener noreferrer">
         <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
           <span class="material-icons-round text-3xl">article</span>
